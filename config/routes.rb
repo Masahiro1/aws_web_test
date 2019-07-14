@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
-  namespace :main do
-    get    'home'
-  end
+  get    'secret', to: 'main#secret'
 
   root 'main#home'
 end
