@@ -5,6 +5,16 @@ class MainController < ApplicationController
 
   def secret; end
 
+  def calc
+    str = params.keys[0].dup()
+    str.gsub!(" ", "+")
+    if /\A[\+\-\*\/()0-9]+\z/ === str
+      @output = eval(str)
+    else
+      @output = "ERROR"
+    end
+  end
+
   private
 
   def basic_auth
