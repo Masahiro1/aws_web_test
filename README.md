@@ -16,7 +16,7 @@ bundle exec rails db:migrate
 
 ---
 
-# EC2でのコマンド
+# EC2での作業内容
 
 参考：[(デプロイ編①)世界一丁寧なAWS解説。EC2を利用して、RailsアプリをAWSにあげるまで](https://qiita.com/naoki_mochizuki/items/814e0979217b1a25aa3e)
 
@@ -70,6 +70,7 @@ sudo service mysqld start
 ln -s /var/lib/mysql/mysql.sock /tmp/mysql.sock
 
 # bundle install
+cd /var/www/rails
 gem install bundler -v 2.0.1
 bundle
 
@@ -85,6 +86,6 @@ sudo service nginx start
 
 # add initialize command to bash_profile
 echo 'sudo service mysqld start' >> ~/.bash_profile
-echo 'bundle exec unicorn_rails -c /var/www/rails/aws_web_test/config/unicorn.conf.rb -D -E production' >> ~/.bash_profile
+echo 'unicorn_rails -c /var/www/rails/aws_web_test/config/unicorn.conf.rb -D -E production' >> ~/.bash_profile
 echo 'sudo service nginx start' >> ~/.bash_profile
 ```
